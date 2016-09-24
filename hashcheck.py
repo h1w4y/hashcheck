@@ -17,7 +17,7 @@ PARSER.add_argument("-i", "--inputfile", required=True,
 PARSER.add_argument("-H", "--hashvalue",
                     help="input hash value, if you want to automatically compare")
 PARSER.add_argument("-a", "--algorithm", default="sha1",
-                    choices=['sha1', 'md5'], help="input hash algorithm type")
+                    choices=['sha256', 'sha1', 'md5'], help="input hash algorithm type")
 PARSER.add_argument("-b", "--blocksize", default=65536,
                     type=int, help="specify a blocksize")
 ARGS = PARSER.parse_args()
@@ -26,7 +26,9 @@ print "\nhashvalue given:\t", ARGS.hashvalue
 print "algorithm given:\t", ARGS.algorithm
 print "blocksize set to:\t", ARGS.blocksize
 
-if ARGS.algorithm == 'sha1':
+if ARGS.algorithm == 'sha256':
+    HASHER = hashlib.sha256()
+elif ARGS.algorithm == 'sha1':
     HASHER = hashlib.sha1()
 elif ARGS.algorithm == 'md5':
     HASHER = hashlib.md5()
