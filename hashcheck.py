@@ -44,7 +44,7 @@ with open(ARGS.inputfile, 'rb') as afile:
 print "\n", ARGS.algorithm, " hash of ", ARGS.inputfile, ": ", HEXDIGEST, "\n"
 
 if ARGS.hashvalue:
-    if ARGS.hashvalue == HEXDIGEST:
+    if ARGS.hashvalue.upper() == HEXDIGEST.upper():
         print "\033[92m", "file\'s hash matches given hash...\n"
     else:
         print "\033[91m", "file\'s hash DOES NOT MATCH given hash\n"
